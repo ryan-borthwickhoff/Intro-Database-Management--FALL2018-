@@ -1,0 +1,6 @@
+SELECT SUM(ORDSALES) AS Sales_By_Returned
+FROM 
+ORDERS A
+INNER JOIN
+ORDERDET B
+ON A.ORDERID = B.ORDERID and status = 'Returned';	

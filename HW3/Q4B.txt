@@ -1,0 +1,12 @@
+SELECT * 
+FROM(
+    (SELECT REGMANAGER, REGION, PRODCAT, SUM(DIFFERENCE) as Overall_Gap
+    FROM TEMP1
+    GROUP BY REGMANAGER, REGION, PRODCAT)
+    PIVOT
+    (
+        SUM(Overall_Gap)
+        FOR PRODCAT
+        IN ('Technology', 'Furniture', 'Office Supplies')
+    )
+);
